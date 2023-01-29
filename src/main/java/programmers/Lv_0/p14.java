@@ -2,7 +2,6 @@ package programmers.Lv_0;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class p14 {
     public static void main(String[] args) {

@@ -1,7 +1,5 @@
 package programmers.Lv_0;
 
-import java.util.Arrays;
-
 public class p31 {
     public static void main(String[] args) {
         System.out.println(solution("1a2b3c4d123Z"));
