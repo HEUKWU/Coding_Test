@@ -5,3 +5,14 @@ public class Main {
 
     }
 }
+
+class Solution {
+    public long[] solution(int x, int n) {
+        long[] a = new long[n];
+        long j = 0;
+        for (int i = 0; i < n; i++) {
+            a[i] = j += x;
+        }
+        return a;
+    }
+}
