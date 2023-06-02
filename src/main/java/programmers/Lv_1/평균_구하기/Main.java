@@ -5,3 +5,13 @@ public class Main {
 
     }
 }
+
+class Solution {
+    public double solution(int[] arr) {
+        int sum = 0;
+        for (int j : arr) {
+            sum += j;
+        }
+        return (double) sum / arr.length;
+    }
+}
