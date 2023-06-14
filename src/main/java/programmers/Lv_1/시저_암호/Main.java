@@ -6,20 +6,26 @@ public class Main {
     }
 
     public static String solution(String s, int n) {
-        char[] c = s.toCharArray();
-        for (int i = 0; i < c.length; i++) {
-            if ('A' <= c[i] && c[i] <= 'Z') {
-                c[i] += n;
-                if (c[i] > 90) {
-                    c[i] -= 26;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            char a = s.charAt(i);
+
+            if ('A' <= a && a <= 'Z') {
+                a += n;
+                if (a > 'Z') {
+                    a -= 26;
                 }
-            } else if ('a' <= c[i] && c[i] <= 'z'){
-                c[i] += n;
-                if (c[i] > 122) {
-                    c[i] -= 26;
+            } else if ('a' <= a && a <= 'z') {
+                a += n;
+                if (a > 'z') {
+                    a -= 26;
                 }
             }
+
+            sb.append(a);
         }
-        return new String(c);
+
+        return sb.toString();
     }
 }
