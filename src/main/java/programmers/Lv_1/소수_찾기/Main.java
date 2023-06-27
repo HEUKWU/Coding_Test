@@ -1,26 +1,31 @@
 package programmers.Lv_1.소수_찾기;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        System.out.println(solution(16));
+        System.out.println(solution(10));
+        System.out.println(solution(5));
     }
 
-    public static int solution(int n) {
+    static int solution(int n) {
         int count = 0;
+
         for (int i = 2; i <= n; i++) {
-            boolean a = true;
-            for (int j = 2; j <= Math.sqrt(i); j++) {
-                if (i % j == 0) {
-                    a = false;
-                    break;
-                }
-            }
-            if (a) {
-                count++;
+            count = count(i, count);
+        }
+
+        return count;
+    }
+
+    static int count(int a, int count) {
+        boolean c = true;
+
+        for (int i = 2; i <= Math.sqrt(a); i++) {
+            if (a % i == 0) {
+                c = false;
+                break;
             }
         }
-        return count;
+
+        return c ? count + 1 : count;
     }
 }
