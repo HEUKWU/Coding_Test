@@ -13,16 +13,18 @@ public class Main {
     }
 
     static int solution(int[][] lines) {
-        int[] arr = new int[201];
+        int[] ints = new int[201];
+        for (int i = 0; i < lines.length; i++) {
+            for (int j = lines[i][0]; j < lines[i][1]; j++) {
+                ints[j + 100]++;
+            }
+        }
+
         int count = 0;
 
-        for (int[] line : lines) {
-            int a = line[0] + 100;
-            int b = line[1] + 100;
-            while (a < b) {
-                if (++arr[a++] == 2) {
-                    count++;
-                }
+        for (int i : ints) {
+            if (i >= 2) {
+                count++;
             }
         }
 
