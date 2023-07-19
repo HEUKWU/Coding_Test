@@ -12,12 +12,8 @@ public class Main {
         String[] split = String.valueOf((long) a * b * c).split("");
 
         int[] num = new int[10];
-        for (int i = 0; i < 10; i++) {
-            for (String s : split) {
-                if (Integer.parseInt(s) == i) {
-                    num[i]++;
-                }
-            }
+        for (String s : split) {
+            num[Integer.parseInt(s)]++;
         }
 
         for (int i : num) {
