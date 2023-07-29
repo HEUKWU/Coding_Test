@@ -1,12 +1,11 @@
 package programmers.Lv_0.암호_해독;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+class Solution {
+    public String solution(String cipher, int code) {
+        StringBuilder answer = new StringBuilder();
+        for (int i = code; i <= cipher.length(); i += code) {
+            answer.append(cipher.charAt(i - 1));
+        }
+        return answer.toString();
     }
 }
