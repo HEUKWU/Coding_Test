@@ -1,12 +1,10 @@
 package programmers.Lv_0.최댓값_만들기_2;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Arrays;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+class Solution {
+    public int solution(int[] numbers) {
+        Arrays.sort(numbers);
+        return Math.max((numbers[numbers.length - 1] * numbers[numbers.length - 2]), (numbers[0] * numbers[1]));
     }
 }
