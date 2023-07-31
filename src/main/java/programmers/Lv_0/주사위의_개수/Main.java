@@ -1,12 +1,7 @@
 package programmers.Lv_0.주사위의_개수;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+class Solution {
+    public int solution(int[] box, int n) {
+        return (box[0] / n) * (box[1] / n) * (box[2] / n);
     }
 }
