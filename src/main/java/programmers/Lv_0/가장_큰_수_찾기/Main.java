@@ -1,12 +1,22 @@
 package programmers.Lv_0.가장_큰_수_찾기;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+class Solution {
+    public int[] solution(int[] array) {
+        int[] answer = new int[2];
+        int max = 0;
+        int a = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == max) {
+                a = i;
+            }
+        }
+        answer[0] = max;
+        answer[1] = a;
+        return answer;
     }
 }
