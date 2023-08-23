@@ -18,16 +18,11 @@ public class Main {
         }
 
         int count = 0;
+        int i = n - 1;
 
-        for (int i = n - 1; i >= 0; i--) {
-            if (a[i] > k) {
-                continue;
-            }
+        while (k > 0) {
             count += k / a[i];
-            k %= k / a[i] * a[i];
-            if (k == 0) {
-                break;
-            }
+            k %= a[i--];
         }
 
         System.out.println(count);
