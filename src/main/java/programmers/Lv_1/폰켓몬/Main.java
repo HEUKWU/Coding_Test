@@ -1,24 +1,18 @@
 package programmers.Lv_1.폰켓몬;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        int[] a = {3, 1, 2, 3};
-        int[] b = {3, 3, 3, 2, 2, 4};
-        int[] c = {3, 3, 3, 2, 2, 2};
-        System.out.println(solution(a));
-        System.out.println(solution(b));
-        System.out.println(solution(c));
-    }
+class Solution {
+    public int solution(int[] nums) {
+        int answer = 0;
+		int n = nums.length/2;
 
-    static int solution(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            set.add(num);
-        }
-
-        return Math.min(set.size(), nums.length / 2);
+		HashSet<Integer> hashSet = new HashSet<Integer>();
+		for(int i=0; i<nums.length; i++) {
+			hashSet.add(nums[i]);
+		}
+		if(n < hashSet.size()) answer = n;
+		else answer = hashSet.size();
+		return answer;
     }
 }
