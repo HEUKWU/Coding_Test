@@ -2,16 +2,11 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int[] citations) {
-        int answer = 0;
         Arrays.sort(citations);
 
-        for (int i = 0; i < citations.length; i++) {
-            int h = citations.length - i;
-
-            if (citations[i] >= h) {
-                answer = h;
-                break;
-            }
+        int answer = 0;
+        for (int i = citations.length - 1; i >= 0; i--) {
+            answer = Math.max(answer, Math.min(citations[i], citations.length - i));
         }
 
         return answer;
