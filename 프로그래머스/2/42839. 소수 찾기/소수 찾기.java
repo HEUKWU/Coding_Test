@@ -1,45 +1,48 @@
 import java.util.HashSet;
 
 class Solution {
-
     static HashSet<Integer> set = new HashSet<>();
+    static char[] arr;
+    static boolean[] visited;
 
     public int solution(String numbers) {
+        arr = numbers.toCharArray();
+        visited = new boolean[arr.length];
 
-        dfs("", numbers);
+        recursion("", 0);
 
-        int answer = 0;
+        return set.size();
+    }
 
-        for (Integer integer : set) {
-            if (prime(integer)) {
-                answer++;
+    private void recursion(String s, int idx) {
+        if (!"".equals(s)) {
+            int num = Integer.parseInt(s);
+            if (isPrime(num)) {
+                set.add(num);
             }
         }
 
-        return answer;
-    }
-
-    static void dfs(String str, String tmp) {
-        if (!str.equals("")) {
-            set.add(Integer.parseInt(str));
-        }
-
-        for (int i = 0; i < tmp.length(); i++) {
-            dfs(str + tmp.charAt(i), tmp.substring(0, i) + tmp.substring(i + 1));
+        for (int i = 0; i < arr.length; i++) {
+            if (visited[i]) {
+                continue;
+            }
+            visited[i] = true;
+            recursion(s + arr[i], idx + 1);
+            visited[i] = false;
         }
     }
 
-    static boolean prime(int n) {
+    private boolean isPrime(int n) {
         if (n == 0 || n == 1) {
             return false;
         }
 
-        for (int i = 2; i <= Math.sqrt(n); i++) {
+        for (int i = 2; i < n; i++) {
             if (n % i == 0) {
                 return false;
             }
-
         }
+
         return true;
     }
 }
