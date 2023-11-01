@@ -2,21 +2,17 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int []arr) {
-        List<Integer> list = new ArrayList<>();
-        
-        int num = 10;
+        Stack<Integer> stack = new Stack<>();
+        stack.add(arr[0]);
+
         for (int i : arr) {
-            if (i != num) {
-                list.add(i);
-                num = i;
+            if (stack.peek() != i) {
+                stack.add(i);
             }
         }
 
-        int[] answer = new int[list.size()];
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = list.get(i);
-        }
-
-        return answer;
+        return stack.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 }
