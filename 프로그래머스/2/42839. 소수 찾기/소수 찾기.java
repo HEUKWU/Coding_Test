@@ -1,44 +1,52 @@
-import java.util.HashSet;
+import java.util.ArrayList;
 
 class Solution {
-    static HashSet<Integer> set = new HashSet<>();
-    static char[] arr;
-    static boolean[] visited;
+
+    private final ArrayList<Integer> list = new ArrayList<>();
+    private final boolean[] check = new boolean[7];
 
     public int solution(String numbers) {
-        arr = numbers.toCharArray();
-        visited = new boolean[arr.length];
+        int answer = 0;
 
-        recursion("", 0);
+        for (int i = 0; i < numbers.length(); i++) {
+            dfs(numbers, "", i + 1);
+        }
 
-        return set.size();
+        for (Integer i : list) {
+            if (isPrime(i)) {
+                answer++;
+            }
+        }
+        
+        return answer;
     }
 
-    private void recursion(String s, int idx) {
-        if (!"".equals(s)) {
-            int num = Integer.parseInt(s);
-            if (isPrime(num)) {
-                set.add(num);
+    private void dfs(String s, String tmp, int n) {
+        if (tmp.length() == n) {
+            int number = Integer.parseInt(tmp);
+            if (!list.contains(number)) {
+                list.add(number);
             }
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            if (visited[i]) {
-                continue;
+        for (int i = 0; i < s.length(); i++) {
+            if (!check[i]) {
+                check[i] = true;
+                tmp += s.charAt(i);
+                dfs(s, tmp, n);
+                check[i] = false;
+                tmp = tmp.substring(0, tmp.length() - 1);
             }
-            visited[i] = true;
-            recursion(s + arr[i], idx + 1);
-            visited[i] = false;
         }
     }
 
-    private boolean isPrime(int n) {
-        if (n == 0 || n == 1) {
+    private boolean isPrime(int number) {
+        if (number == 0 || number == 1) {
             return false;
         }
 
-        for (int i = 2; i < n; i++) {
-            if (n % i == 0) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
                 return false;
             }
         }
