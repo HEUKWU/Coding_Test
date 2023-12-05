@@ -2,20 +2,22 @@ import java.util.Arrays;
 
 class Solution {
     public String solution(int[] numbers) {
-        String[] arr = new String[numbers.length];
-
-        for (int i = 0; i < numbers.length; i++) {
-            arr[i] = String.valueOf(numbers[i]);
+        String[] n = new String[numbers.length];
+        int zero = 0;
+        for (int i = 0; i < n.length; i++) {
+            if (numbers[i] == 0) {
+                zero++;
+                if (zero == numbers.length) {
+                    return "0";
+                }
+            }
+            n[i] = String.valueOf(numbers[i]);
         }
 
-        Arrays.sort(arr, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
-        
-        if ("0".equals(arr[0])) {
-            return "0";
-        }
+        Arrays.sort(n, (a, b) -> (b + a).compareTo(a + b));
 
         StringBuilder sb = new StringBuilder();
-        for (String s : arr) {
+        for (String s : n) {
             sb.append(s);
         }
 
