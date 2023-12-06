@@ -1,20 +1,17 @@
 class Solution {
     public String solution(String number, int k) {
         StringBuilder sb = new StringBuilder();
+        int i = 0;
 
-        int length = number.length() - k;
-        int start = 0;
-
-        for (int i = 0; i < length; i++) {
+        for (int j = 0; j < number.length() - k; j++) {
             int max = 0;
-            for (int j = start; j < k + sb.length() + 1; j++) {
-                int a = number.charAt(j) - '0';
-                if (max < a) {
-                    max = a;
-                    start = j + 1;
+            for (int l = i; l <= k + j; l++) {
+                int n = number.charAt(l) - '0';
+                if (n > max) {
+                    max = n;
+                    i = l + 1;
                 }
             }
-
             sb.append(max);
         }
 
