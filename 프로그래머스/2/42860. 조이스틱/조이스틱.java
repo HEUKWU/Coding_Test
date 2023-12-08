@@ -1,23 +1,20 @@
 class Solution {
     public int solution(String name) {
         int count = 0;
-        int move = name.length() - 1;
+        int len = name.length();
 
-        for (int i = 0; i < name.length(); i++) {
-            char c = name.charAt(i);
-            if (c < 'N') {
-                count += c - 'A';
-            } else {
-                count += 'Z' - c + 1;
+        int move = len - 1;
+
+        for (int i = 0; i < len; i++) {
+            count += Math.min(name.charAt(i) - 'A', 'Z' - name.charAt(i) + 1);
+
+            int index = i + 1;
+            while (index < len && name.charAt(index) == 'A') {
+                index++;
             }
 
-            int a = i + 1;
-
-            while (a < name.length() && name.charAt(a) == 'A') {
-                a++;
-            }
-
-            move = Math.min(move, i + (name.length() - a) + Math.min(i, name.length() - a));
+            move = Math.min(move, i * 2 + len - index);
+            move = Math.min(move, (len - index) * 2 + i);
         }
 
         return count + move;
