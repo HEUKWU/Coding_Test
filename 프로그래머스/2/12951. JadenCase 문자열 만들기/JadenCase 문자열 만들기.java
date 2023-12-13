@@ -1,22 +1,14 @@
 class Solution {
     public String solution(String s) {
-        String[] arr = s.split(" ");
+        String[] arr = s.toLowerCase().split("");
         StringBuilder sb = new StringBuilder();
+        boolean isBlank = true;
 
         for (String a : arr) {
-            if (a.length() != 0) {
-                String first = a.substring(0, 1).toUpperCase();
-                sb.append(first);
-                String remain = a.substring(1).toLowerCase();
-                sb.append(remain);
-            }
-            sb.append(" ");
+            sb = isBlank ? sb.append(a.toUpperCase()) : sb.append(a);
+            isBlank = a.equals(" ");
         }
 
-        if (s.endsWith(" ")) {
-            return sb.toString();
-        }
-
-        return sb.substring(0, sb.toString().length() - 1);
+        return sb.toString();
     }
 }
