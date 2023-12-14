@@ -3,14 +3,13 @@ class Solution {
         int[] count = new int[2];
 
         while (true) {
-            int sum = 0;
-            for (int i = 0; i < s.length(); i++) {
-                sum += s.charAt(i) - '0';
-            }
-            count[0]++;
-            count[1] += s.length() - sum;
+            count[1] += s.length();
+            s = s.replaceAll("0", "");
+            count[1] -= s.length();
 
-            s = Integer.toBinaryString(sum);
+            s = Integer.toBinaryString(s.length());
+            count[0]++;
+
             if (s.equals("1")) {
                 return count;
             }
