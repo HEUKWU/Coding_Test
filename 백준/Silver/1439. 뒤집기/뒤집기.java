@@ -5,29 +5,27 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
-
-        int[] a = new int[s.length()];
-        for (int i = 0; i < a.length; i++) {
-            a[i] = s.charAt(i) - '0';
-        }
-
+        String number = br.readLine();
+        
         int zero = 0;
         int one = 0;
 
-        if (a[0] == 0) {
-            one++;
-        } else {
+        if (number.charAt(0) == '1') {
             zero++;
+        } else {
+            one++;
         }
 
-        for (int i = 0; i < a.length - 1; i++) {
-            if (a[i] != a[i + 1]) {
-                if (a[i + 1] == 0) {
-                    one++;
-                } else {
+        for (int i = 1; i < number.length(); i++) {
+            char prev = number.charAt(i - 1);
+            char now = number.charAt(i);
+
+            if (prev != now) {
+                if (now == '1') {
                     zero++;
-                }
+                } else {
+                    one++;
+                } 
             }
         }
 
