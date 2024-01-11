@@ -1,24 +1,16 @@
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Solution {
     public String solution(int[] numbers) {
-        String[] n = new String[numbers.length];
-        int zero = 0;
-        for (int i = 0; i < n.length; i++) {
-            if (numbers[i] == 0) {
-                zero++;
-                if (zero == numbers.length) {
-                    return "0";
-                }
-            }
-            n[i] = String.valueOf(numbers[i]);
-        }
-
-        Arrays.sort(n, (a, b) -> (b + a).compareTo(a + b));
+        List<String> list = Arrays.stream(numbers).mapToObj(String::valueOf).sorted((a, b) -> (b + a).compareTo(a + b)).collect(Collectors.toList());
 
         StringBuilder sb = new StringBuilder();
-        for (String s : n) {
-            sb.append(s);
+        list.forEach(sb::append);
+
+        if (list.get(0).equals("0")) {
+            return "0";
         }
 
         return sb.toString();
