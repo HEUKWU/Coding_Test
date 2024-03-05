@@ -2,17 +2,13 @@ import java.util.*;
 
 class Solution {
     public int solution(int k, int[] tangerine) {
-        Map<Integer, Integer> map = new HashMap<>();
+        Integer[] values = new Integer[10000001];
+        Arrays.fill(values, 0);
         for (int i : tangerine) {
-            if (map.containsKey(i)) {
-                map.put(i, map.get(i) + 1);
-                continue;
-            }
-            map.put(i, 1);
+            values[i]++;
         }
 
-        ArrayList<Integer> values = new ArrayList<>(map.values());
-        values.sort(Collections.reverseOrder());
+        Arrays.sort(values, Collections.reverseOrder());
 
         int count = 0;
         for (Integer value : values) {
