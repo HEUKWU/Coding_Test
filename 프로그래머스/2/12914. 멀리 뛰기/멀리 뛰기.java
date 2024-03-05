@@ -1,12 +1,13 @@
 class Solution {
     public long solution(int n) {
-        long[] a = new long[2001];
-        a[1] = 1;
-        a[2] = 2;
+        long[] d = new long[2001];
+        d[1] = 1;
+        d[2] = 2;
+
         for (int i = 3; i < 2001; i++) {
-            a[i] = (a[i - 2] + a[i - 1]) % 1234567;
+            d[i] = (d[i - 1] + d[i - 2]) % 1234567;
         }
 
-        return a[n];
+        return d[n];
     }
 }
