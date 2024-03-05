@@ -3,23 +3,26 @@ import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
         Map<Integer, Integer> map = new HashMap<>();
-
         for (int i : tangerine) {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+            if (map.containsKey(i)) {
+                map.put(i, map.get(i) + 1);
+                continue;
+            }
+            map.put(i, 1);
         }
 
-        List<Integer> list = new ArrayList<>(map.values());
-        Collections.sort(list);
+        ArrayList<Integer> values = new ArrayList<>(map.values());
+        values.sort(Collections.reverseOrder());
 
         int count = 0;
-        for (int i = list.size() - 1; i >= 0; i--) {
-            k -= list.get(i);
+        for (Integer value : values) {
+            k -= value;
             count++;
             if (k <= 0) {
-                break;
+                return count;
             }
         }
 
-        return count;
+        return 0;
     }
 }
