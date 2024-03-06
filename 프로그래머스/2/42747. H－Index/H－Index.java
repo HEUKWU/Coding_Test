@@ -4,13 +4,14 @@ class Solution {
     public int solution(int[] citations) {
         Arrays.sort(citations);
 
-        int n = citations.length;
-        int max = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            int min = Math.min(citations[i], n - i);
-            max = Math.max(max, min);
+        for (int i = 0; i < citations.length; i++) {
+            int h = citations.length - i;
+
+            if (citations[i] >= h) {
+                return h;
+            }
         }
 
-        return max;
+        return 0;
     }
 }
