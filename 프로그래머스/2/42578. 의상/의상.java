@@ -1,10 +1,12 @@
 import java.util.HashMap;
+import java.util.Map;
 
 class Solution {
     public int solution(String[][] clothes) {
-        HashMap<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         for (String[] clothe : clothes) {
-            map.put(clothe[1], map.getOrDefault(clothe[1], 0) + 1);
+            String kind = clothe[1];
+            map.put(kind, map.getOrDefault(kind, 0) + 1);
         }
 
         int sum = 1;
