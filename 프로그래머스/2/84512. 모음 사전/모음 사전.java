@@ -10,7 +10,8 @@ class Solution {
         int count = 0;
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(word)) {
-                return i;
+                count = i;
+                break;
             }
         }
 
@@ -20,6 +21,7 @@ class Solution {
     void recursion(String s, int i) {
         char[] alphabet = {'A', 'E', 'I', 'O', 'U'};
         list.add(s);
+        System.out.println(s);
 
         if (i == 5) {
             return;
