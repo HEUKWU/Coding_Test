@@ -1,34 +1,32 @@
 import java.util.ArrayList;
-import java.util.List;
 
 class Solution {
-
-    private final static char[] alphabet = {'A', 'E', 'I', 'O', 'U'};
-    private final static List<String> list = new ArrayList<>();
-
-    private static void recursion(String word, String s, int x) {
-        list.add(s);
-
-        if (x == 5) {
-            return;
-        }
-
-        for (int i = 0; i < 5; i++) {
-            recursion(word, s + alphabet[i], x + 1);
-        }
-    }
+    ArrayList<String> list = new ArrayList<>();
 
     public int solution(String word) {
+
+        recursion("", 0);
+
         int count = 0;
-
-        recursion(word, "", 0);
-
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(word)) {
-                count = i;
+                return i;
             }
         }
 
         return count;
+    }
+
+    void recursion(String s, int i) {
+        char[] alphabet = {'A', 'E', 'I', 'O', 'U'};
+        list.add(s);
+
+        if (i == 5) {
+            return;
+        }
+
+        for (int j = 0; j < 5; j++) {
+            recursion(s + alphabet[j], i + 1);
+        }
     }
 }
