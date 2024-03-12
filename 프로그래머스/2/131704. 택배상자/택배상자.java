@@ -1,43 +1,24 @@
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 class Solution {
     public int solution(int[] order) {
-        int n = order.length;
+        Stack<Integer> sub = new Stack<>();
 
         int count = 0;
+        for (int i = 0, j = 0; i < order.length; i++) {
+            sub.add(i + 1);
 
-        Queue<Integer> q = new LinkedList<>();
-        for (int i = 1; i <= n; i++) {
-            q.add(i);
-        }
-
-        Stack<Integer> stack = new Stack<>();
-        int added = 0;
-        for (int box : order) {
-
-            while (true) {
-                if (box < added) {
-                    if (stack.peek() == box) {
-                        added = stack.pop();
-                        count++;
-                        break;
-                    } else {
-                        return count;
-                    }
+            while (!sub.isEmpty()) {
+                if (sub.peek() == order[j]) {
+                    sub.pop();
+                    j++;
+                    count++;
                 } else {
-                    if (!q.isEmpty() && q.peek() == box) {
-                        added = q.poll();
-                        count++;
-                        break;
-                    } else {
-                        stack.push(q.poll());
-                    }
+                    break;
                 }
             }
         }
-        
+
         return count;
     }
 }
