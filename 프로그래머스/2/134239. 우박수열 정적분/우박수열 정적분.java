@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-        List<Integer> list;
+        private List<Integer> list;
 
     public double[] solution(int k, int[][] ranges) {
         list = collatz(k);
