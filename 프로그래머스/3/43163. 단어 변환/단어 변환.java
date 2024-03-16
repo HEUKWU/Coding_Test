@@ -1,42 +1,55 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Solution {
-    private String[] words;
-    private boolean[] visited;
-    private String target;
-    private int count;
 
-    public int solution(String begin, String target, String[] words) {
-        this.words = words;
-        visited = new boolean[words.length];
-        this.target = target;
-        dfs(begin, 0);
+    static class Node {
+        private final String word;
+        private final int count;
 
-        return count;
+        public Node(String word, int count) {
+            this.word = word;
+            this.count = count;
+        }
     }
 
-    private void dfs(String begin, int count) {
-        if (begin.equals(target)) {
-            this.count = count;
-            return;
-        }
+    public int solution(String begin, String target, String[] words) {
+        int length = words.length;
+        boolean[] visited = new boolean[length];
 
-        for (int i = 0; i < words.length; i++) {
-            if (visited[i]) {
-                continue;
+        Queue<Node> q = new LinkedList<>();
+        q.add(new Node(begin, 0));
+
+        int answer = 0;
+        while (!q.isEmpty()) {
+            Node node = q.poll();
+            if (node.word.equals(target)) {
+                answer = node.count;
+                break;
             }
 
-            String word = words[i];
-            int c = 0;
-            for (int j = 0; j < begin.length(); j++) {
-                if (begin.charAt(j) == word.charAt(j)) {
-                    c++;
+            for (int i = 0; i < length; i++) {
+                if (!visited[i] && check(node.word, words[i])) {
+                    visited[i] = true;
+                    q.add(new Node(words[i], node.count + 1));
                 }
             }
+        }
 
-            if (c == begin.length() - 1) {
-                visited[i] = true;
-                dfs(words[i], count + 1);
-                visited[i] = false;
+        return answer;
+    }
+
+    private boolean check(String word, String next) {
+        int c = 0;
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != next.charAt(i)) {
+                c++;
+            }
+            if (c > 1) {
+                return false;
             }
         }
+
+        return true;
     }
 }
