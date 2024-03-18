@@ -9,7 +9,6 @@ public class Main {
         int k = Integer.parseInt(br.readLine());
 
         Stack<Integer> stack = new Stack<>();
-        int sum = 0;
 
         for (int i = 0; i < k; i++) {
             int a = Integer.parseInt(br.readLine());
@@ -21,10 +20,11 @@ public class Main {
             }
         }
 
+        int count = 0;
         for (Integer i : stack) {
-            sum += i;
+            count += i;
         }
 
-        System.out.println(sum);
+        System.out.println(count);
     }
 }
