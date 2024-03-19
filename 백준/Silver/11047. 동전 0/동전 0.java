@@ -7,26 +7,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
-        int[] a = new int[n];
-
+        int[] coin = new int[n];
         for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(br.readLine());
+            coin[i] = Integer.parseInt(br.readLine());
         }
 
         int count = 0;
 
-        for (int i = n - 1; i >= 0; i--) {
-            if (a[i] > k) {
-                continue;
-            }
-            count += k / a[i];
-            k %= k / a[i] * a[i];
-            if (k == 0) {
-                break;
+        for (int i = coin.length - 1; i >= 0; i--) {
+            if (k >= coin[i]) {
+                count += k / coin[i];
+                k %= coin[i];
             }
         }
 
