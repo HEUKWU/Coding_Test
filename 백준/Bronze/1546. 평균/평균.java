@@ -7,25 +7,21 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int max = 0;
-        double[] arr = new double[n];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int j = 0; j < n; j++) {
-            int a = Integer.parseInt(st.nextToken());
-            if (a > max) {
-                max = a;
-            }
-            arr[j] = a;
+        int max = 0;
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            int t = Integer.parseInt(st.nextToken());
+            a[i] = t;
+            max = Math.max(max, t);
         }
 
         double sum = 0;
-
         for (int i = 0; i < n; i++) {
-            sum += arr[i] / max * 100;
+            sum += ((double) a[i] / max) * 100;
         }
 
         System.out.println(sum / n);
-
     }
 }
