@@ -6,20 +6,21 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int m = Integer.parseInt(br.readLine());
 
-        int[] cards = new int[20000001];
-
+        int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < m; i++) {
-            cards[Integer.parseInt(st.nextToken()) + 10000000]++;
+
+        int[] a = new int[20_000_001];
+        for (int i = 0; i < n; i++) {
+            a[Integer.parseInt(st.nextToken()) + 10_000_000]++;
         }
 
-        int a = Integer.parseInt(br.readLine());
+        int m = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
+
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < a; i++) {
-            sb.append(cards[Integer.parseInt(st.nextToken()) + 10000000]).append(" ");
+        for (int i = 0; i < m; i++) {
+            sb.append(a[Integer.parseInt(st.nextToken()) + 10_000_000]).append(" ");
         }
 
         System.out.println(sb);
