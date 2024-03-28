@@ -8,8 +8,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int a = Integer.parseInt(new StringBuffer(st.nextToken()).reverse().toString());
-        int b = Integer.parseInt(new StringBuffer(st.nextToken()).reverse().toString());
+        int a = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
+        int b = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
 
         System.out.println(Math.max(a, b));
     }
