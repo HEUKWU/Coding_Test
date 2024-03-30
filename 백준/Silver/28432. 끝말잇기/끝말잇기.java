@@ -41,7 +41,7 @@ public class Main {
                 char lastChar = next.charAt(0);
 
                 // 마지막 문자가 ?의 마지막 문자와 같을 때
-                if (!words.contains(candidate) && candidate.charAt(candidate.length() - 1) == lastChar) {
+                if (candidate.charAt(candidate.length() - 1) == lastChar) {
                     System.out.println(candidate);
                     break;
                 }
@@ -52,7 +52,7 @@ public class Main {
                 char firstChar = prev.charAt(prev.length() - 1);
 
                 // 첫번째 문자가 ?의 첫번째 문자와 같을 때
-                if (!words.contains(candidate) && candidate.charAt(0) == firstChar) {
+                if (candidate.charAt(0) == firstChar) {
                     System.out.println(candidate);
                     break;
                 }
@@ -62,7 +62,7 @@ public class Main {
                 char firstChar = prev.charAt(prev.length() - 1);
                 char lastChar = next.charAt(0);
 
-                if (!words.contains(candidate) && candidate.charAt(0) == firstChar && candidate.charAt(candidate.length() - 1) == lastChar) {
+                if (candidate.charAt(0) == firstChar && candidate.charAt(candidate.length() - 1) == lastChar) {
                     System.out.println(candidate);
                     break;
                 }
