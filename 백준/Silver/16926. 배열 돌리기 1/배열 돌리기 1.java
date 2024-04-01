@@ -15,7 +15,7 @@ public class Main {
         int[][] arr = new int[n][m];
         for (int i = 0; i < n; i++) {
             String[] num = br.readLine().split(" ");
-            arr[i] = Arrays.stream(num).map(Integer::parseInt).mapToInt(Integer::intValue).toArray();
+            arr[i] = Arrays.stream(num).mapToInt(Integer::parseInt).toArray();
         }
 
         // 회전 하는 그룹 개수
