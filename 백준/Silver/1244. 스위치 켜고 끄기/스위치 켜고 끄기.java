@@ -45,22 +45,28 @@ public class Main {
     }
 
     private static void man(int num) {
-        for (int j = 0; j < switchCount; j++) {
-            if ((j + 1) % num == 0)
-                switches[j] = switches[j] == 0 ? 1 : 0;
+        for (int i = 0; i < switchCount; i++) {
+            if ((i + 1) % num == 0) {
+                switches[i] = switches[i] == 0 ? 1 : 0;
+            }
         }
     }
 
     private static void woman(int num) {
+        int index = num - 1;
+
         switches[num - 1] = switches[num - 1] == 0 ? 1 : 0;
-        for (int i = 1; i < switchCount / 2; i++) {
-            if (num - 1 + i >= switchCount || num - 1 - i < 0)
-                break;
-            if (switches[num - 1 - i] == switches[num - 1 + i]) {
-                switches[num - 1 - i] = switches[num - 1 - i] == 0 ? 1 : 0;
-                switches[num - 1 + i] = switches[num - 1 + i] == 0 ? 1 : 0;
-            } else {
-                break;
+        for (int i = 1; i <= index; i++) {
+            int minus = index - i;
+            int plus = index + i;
+
+            if (0 <= minus && plus < switchCount) {
+                if (switches[minus] == switches[plus]) {
+                    switches[minus] = switches[minus] == 0 ? 1 : 0;
+                    switches[plus] = switches[plus] == 0 ? 1 : 0;
+                } else {
+                    break;
+                }
             }
         }
     }
