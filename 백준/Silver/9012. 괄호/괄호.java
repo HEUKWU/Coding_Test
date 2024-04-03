@@ -13,6 +13,7 @@ public class Main {
 
         for (int i = 0; i < t; i++) {
             String parenthesis = br.readLine();
+            
             check(parenthesis);
         }
 
@@ -23,6 +24,10 @@ public class Main {
         Stack<Character> stack = new Stack<>();
         char first = parenthesis.charAt(0);
 
+        if (first == ')') {
+            sb.append("NO").append('\n');
+            return;
+        }
 
         stack.add(first);
 
