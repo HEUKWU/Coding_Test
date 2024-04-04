@@ -8,16 +8,17 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        List<Integer> list = new ArrayList<>();
+        int[] arr = new int[n * n];
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                list.add(Integer.parseInt(st.nextToken()));
+                arr[(n - 1) * i + i + j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        list.sort(Collections.reverseOrder());
+        // 반대로 정렬
+        Arrays.sort(arr);
 
-        System.out.println(list.get(n - 1));
+        System.out.println(arr[n * n - n]);
     }
 }
