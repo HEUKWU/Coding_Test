@@ -9,19 +9,19 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        int[] a = new int[n];
+        int[] people = new int[n];
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(st.nextToken());
+            people[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(a);
+        Arrays.sort(people);
 
-        int aSum = 0;
         int sum = 0;
-        for (int i = 0; i < n; i++) {
-            aSum += a[i];
-            sum += aSum;
+        int s = 0;
+        for (int person : people) {
+            s += person;
+            sum += s;
         }
 
         System.out.println(sum);
