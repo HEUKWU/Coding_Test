@@ -9,10 +9,11 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         int[] arr = new int[n * n];
+        int k = 0;
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                arr[(n - 1) * i + i + j] = Integer.parseInt(st.nextToken());
+                arr[k++] = Integer.parseInt(st.nextToken());
             }
         }
 
