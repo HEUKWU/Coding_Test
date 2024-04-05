@@ -2,7 +2,8 @@ class Solution {
 
     private int[] numbers;
     private int target;
-    private int count = 0;
+
+    private int answer = 0;
 
     public int solution(int[] numbers, int target) {
         this.numbers = numbers;
@@ -10,17 +11,18 @@ class Solution {
 
         dfs(0, 0);
 
-        return count;
+        return answer;
     }
 
-    private void dfs(int depth, int sum) {
+    private void dfs(int num, int depth) {
         if (depth == numbers.length) {
-            if (sum == target) {
-                count++;
+            if (num == target) {
+                answer++;
             }
-        } else {
-            dfs(depth + 1, sum + numbers[depth]);
-            dfs(depth + 1, sum - numbers[depth]);
+            return;
         }
+
+        dfs(num + numbers[depth], depth + 1);
+        dfs(num - numbers[depth], depth + 1);
     }
 }
