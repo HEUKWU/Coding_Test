@@ -1,14 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
-    private static List<List<Integer>> list = new ArrayList<>();
+    private static List<Set<Integer>> list = new ArrayList<>();
     private static int[] visited;
     private static int count = 1;
 
@@ -21,7 +18,7 @@ public class Main {
         int r = Integer.parseInt(st.nextToken());
 
         for (int i = 0; i < n + 1; i++) {
-            list.add(new ArrayList<>());
+            list.add(new TreeSet<>());
         }
 
         visited = new int[n + 1];
@@ -33,10 +30,6 @@ public class Main {
 
             list.get(u).add(v);
             list.get(v).add(u);
-        }
-
-        for (int i = 1; i < list.size(); i++) {
-            Collections.sort(list.get(i));
         }
 
         dfs(r);
@@ -52,7 +45,7 @@ public class Main {
     private static void dfs(int r) {
         visited[r] = count++;
 
-        List<Integer> nextNodes = list.get(r);
+        Set<Integer> nextNodes = list.get(r);
 
         for (Integer nextNode : nextNodes) {
             if (visited[nextNode] == 0) {
