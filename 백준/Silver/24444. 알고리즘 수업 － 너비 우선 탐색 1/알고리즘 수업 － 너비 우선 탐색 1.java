@@ -12,9 +12,9 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
         int r = Integer.parseInt(st.nextToken());
 
-        List<List<Integer>> list = new ArrayList<>();
+        List<Set<Integer>> list = new ArrayList<>();
         for (int i = 0; i < n + 1; i++) {
-            list.add(new ArrayList<>());
+            list.add(new TreeSet<>());
         }
 
         int[] visited = new int[n + 1];
@@ -27,18 +27,14 @@ public class Main {
             list.get(u).add(v);
             list.get(v).add(u);
         }
-
-        for (int i = 1; i < list.size(); i++) {
-            Collections.sort(list.get(i));
-        }
-
-        Queue<List<Integer>> q = new LinkedList<>();
+        
+        Queue<Set<Integer>> q = new LinkedList<>();
         q.add(list.get(r));
 
         int count = 1;
         visited[r] = count++;
         while (!q.isEmpty()) {
-            List<Integer> nextNodes = q.poll();
+            Set<Integer> nextNodes = q.poll();
 
             for (Integer nextNode : nextNodes) {
                 if (visited[nextNode] == 0) {
