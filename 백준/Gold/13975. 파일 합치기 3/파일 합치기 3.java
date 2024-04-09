@@ -32,8 +32,8 @@ public class Main {
             Long c1 = q.poll();
             Long c2 = q.poll();
 
-            sum += c1 + c2;
             s += c1 + c2;
+            sum += s;
             q.add(s);
         }
 
