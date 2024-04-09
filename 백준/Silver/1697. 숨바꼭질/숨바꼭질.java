@@ -21,6 +21,10 @@ public class Main {
 
         while (!q.isEmpty()) {
             Integer x = q.poll();
+            
+            if (x == k) {
+                break;
+            }
 
             int nx = x + 1;
             if (0 <= nx && nx < 100_001) {
